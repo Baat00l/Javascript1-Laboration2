@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>Laptop UI</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <svg
+          width="44"
+          height="22"
+          viewBox="0 0 44 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle opacity="0.5" cx="11" cy="11" r="11" fill="#5F5F79" />
+          <circle opacity="0.5" cx="22" cy="11" r="11" fill="#5F5F79" />
+          <circle opacity="0.5" cx="33" cy="11" r="11" fill="#5F5F79" />
+        </svg>
+        <h4 class="logo">Three Dots</h4>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link">Specs</a></li>
+          <li><a href="#" class="nav-link">Products</a></li>
+          <li><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cart">
+        <i class="fa badge fa-lg" id="cart-icon" value="0">&#xf07a;</i>
+      </div>
+    </header>
+    <main>
+      <section class="presentation">
+        <div class="introduction">
+          <div class="intro-text">
+            <h1>Laptop for the future</h1>
+            <p>
+              The new 14 inch bezeless display offering a 4k display with touch screen.
+            </p>
+          </div>
+          <div class="cta">
+            <button class="cta-select" id="cart-button">14 Inch</button>
+            <button class="cta-remove" id="remove-button" style="display: none;">Remove from cart</button>
+          </div>
+        </div>
+        <div class="cover">
+          <img src="https://i.ibb.co/FJrnpsL/matebook.png" alt="Matebook">
+        </div>
+      </section>
+    </main>
+    <script>
+      // Variabler för att hålla koll på antalet varor i kundvagnen
+      let cartCount = 0;
+      const cartIcon = document.getElementById('cart-icon');
+      const cartButton = document.getElementById('cart-button');
+      const removeButton = document.getElementById('remove-button');
+
+      // Klickhändelse för att lägga till i kundvagnen
+      cartButton.addEventListener('click', () => {
+        cartCount++;
+        updateCartDisplay();
+      });
+
+      // Klickhändelse för att ta bort från kundvagnen
+      removeButton.addEventListener('click', () => {
+        if (cartCount > 0) {
+          cartCount--;
+          updateCartDisplay();
+        }
+      });
+
+      // Uppdatera visningen av cart och knappar
+      function updateCartDisplay() {
+        // Uppdatera visningen av antalet varor
+        cartIcon.setAttribute('value', cartCount);
+
+        // Ändra knapptexten och visa/dölj "Remove from cart"
+        if (cartCount > 0) {
+          cartButton.textContent = 'Remove from cart';
+          removeButton.style.display = 'inline-block';
+        } else {
+          cartButton.textContent = '14 Inch';
+          removeButton.style.display = 'none';
+        }
+      }
+
+      // Inledande uppdatering av badge-räknaren
+      updateCartDisplay();
+    </script>
+  </body>
+</html>
+
