@@ -1,1 +1,1 @@
-# Laboration2-Javascript1
+Laboration 1 JS Functions
